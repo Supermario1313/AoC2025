@@ -24,8 +24,10 @@ dependencies = [
  "chrono",
  "dhat",
  "iter_accumulate",
+ "iter_peek_end",
  "itertools",
  "pico-args",
+ "primes",
  "regex",
  "tinyjson",
 ]
@@ -180,6 +182,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cfc5546dc1f7da34a3e64ec279cddb49c488e9134d96d206f8e7b49f928a96b0"
 
 [[package]]
+name = "iter_peek_end"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f42ce71bd4c8593a2c84389266b6b6573fabd4f61e801b21d5efa42f09f937d"
+
+[[package]]
 name = "itertools"
 version = "0.14.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -308,6 +316,12 @@ name = "pico-args"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5be167a7af36ee22fe3115051bc51f6e6c7054c9348e28deb4f49bd6f705a315"
+
+[[package]]
+name = "primes"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0466ef49edd4a5a4bc9d62804a34e89366810bd8bfc3ed537101e3d099f245c5"
 
 [[package]]
 name = "proc-macro2"

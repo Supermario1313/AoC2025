@@ -1,3 +1,5 @@
+use std::iter;
+
 
 /// Returns the number of digits of `n`.
 pub fn num_digits(n: u64) -> u32 {
@@ -46,7 +48,11 @@ pub fn concat(a: u64, b: u64) -> u64 {
 /// Concats a little-endian list of integers together, returns None if `list.len()` is `0`.
 pub fn concat_list(list: &[u64]) -> Option<u64> {
     list.iter().copied().reduce(|acc, elem| concat(elem, acc))
+}
 
+/// Repeats a `number` `repetitions` times, should be faster than concat_list
+pub fn repeat(number: u64, repetitions: u32) -> Option<u64> {
+    iter::repeat_n(number, repetitions as usize).reduce(|acc, elem| concat(elem, acc))
 }
 
 #[cfg(test)]
@@ -100,5 +106,13 @@ mod tests {
         assert_eq!(concat_list(&[3, 2, 1]), Some(123));
         assert_eq!(concat_list(&[56, 34, 12]), Some(123456));
         assert_eq!(concat_list(&[456, 123]), Some(123456));
+    }
+
+    #[test]
+    fn test_repeat() {
+        assert_eq!(repeat(1, 3), Some(111));
+        assert_eq!(repeat(28, 5), Some(2828282828));
+        assert_eq!(repeat(0, 12), Some(0));
+        assert_eq!(repeat(42, 0), None);
     }
 }
