@@ -55,6 +55,17 @@ pub fn repeat(number: u64, repetitions: u32) -> Option<u64> {
     iter::repeat_n(number, repetitions as usize).reduce(|acc, elem| concat(elem, acc))
 }
 
+/// Evaluates a polynomial with Horner's method, can also be used to convert a big-endian digit sequence into an integer
+pub fn horner(polynomial: &[u64], value: u64) -> u64 {
+    let mut ret = 0;
+
+    for coefficient in polynomial {
+        ret = value * ret + coefficient;
+    }
+
+    ret
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -114,5 +125,12 @@ mod tests {
         assert_eq!(repeat(28, 5), Some(2828282828));
         assert_eq!(repeat(0, 12), Some(0));
         assert_eq!(repeat(42, 0), None);
+    }
+
+    #[test]
+    fn test_horner() {
+        assert_eq!(horner(&[], 42), 0);
+        assert_eq!(horner(&[1, 2, 3], 10), 123);
+        assert_eq!(horner(&[10, 2, 3, 12], 2), 106);
     }
 }
