@@ -1,4 +1,4 @@
-use advent_of_code::int_utils::{self, horner};
+use advent_of_code::int_utils::{self};
 use itertools::Itertools;
 
 advent_of_code::solution!(3);
