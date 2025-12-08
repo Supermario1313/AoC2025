@@ -66,6 +66,15 @@ pub fn horner(polynomial: &[u64], value: u64) -> u64 {
     ret
 }
 
+/// 3D squared euclidian distance
+pub fn squared_eucl_3d((x1, y1, z1): (u64, u64, u64), (x2, y2, z2): (u64, u64, u64)) -> u64 {
+    let x_diff = x1.abs_diff(x2);
+    let y_diff = y1.abs_diff(y2);
+    let z_diff = z1.abs_diff(z2);
+
+    x_diff.pow(2) + y_diff.pow(2) + z_diff.pow(2)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
